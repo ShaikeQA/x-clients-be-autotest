@@ -1,21 +1,17 @@
-package org.inno.auto.steps;
+package org.inno.auto.steps.api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.inno.auto.model.Employee;
-import org.inno.auto.model.PostEmployeeResponse;
-
-import java.util.ArrayList;
 
 import static org.inno.auto.service.PropertiesService.*;
-import static org.inno.auto.steps.AuthApiSteps.*;
+import static org.inno.auto.steps.api.AuthApiSteps.*;
 
 
 public class EmployeeApiSteps {
 
-    public static ArrayList<Employee> getEmployeeByCompanyId(int companyId, int expectedStatusCode) {
+    public static Response getEmployeeByCompanyId(int companyId, int expectedStatusCode) {
         Response response =
                 RestAssured.given()
                         .log().all()
@@ -28,10 +24,10 @@ public class EmployeeApiSteps {
 
         response.then().statusCode(expectedStatusCode);
 
-        return new ArrayList<>(JsonPath.from(response.getBody().asString()).getList("$", Employee.class));
+        return response;
     }
-
-    public static Employee getEmployeeById(int employeeId, int expectedStatusCode) {
+//new ArrayList<>(JsonPath.from(response.getBody().asString()).getList("$", Employee.class))
+    public static Response getEmployeeById(int employeeId, int expectedStatusCode) {
         Response response =
                 RestAssured.given()
                         .log().all()
@@ -44,10 +40,10 @@ public class EmployeeApiSteps {
 
         response.then().statusCode(expectedStatusCode);
 
-        return response.getBody().as(Employee.class);
+        return response;
     }
 
-    public static PostEmployeeResponse postEmployee(Employee employee, int expectedStatusCode) {
+    public static Response postEmployee(Employee employee, int expectedStatusCode) {
         Response response =
                 RestAssured.given()
                         .log().all()
@@ -62,10 +58,10 @@ public class EmployeeApiSteps {
 
         response.then().statusCode(expectedStatusCode);
 
-        return response.getBody().as(PostEmployeeResponse.class);
+        return response;
     }
 
-    public static Employee patchEmployee(Employee employeeForPath, int employeeId, int expectedStatusCode) {
+    public static Response patchEmployee(Employee employeeForPath, int employeeId, int expectedStatusCode) {
         Response response =
                 RestAssured.given()
                         .log().all()
@@ -81,6 +77,6 @@ public class EmployeeApiSteps {
 
         response.then().statusCode(expectedStatusCode);
 
-        return response.getBody().as(Employee.class);
+        return response;
     }
 }

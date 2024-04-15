@@ -1,4 +1,4 @@
-package org.inno.auto.steps;
+package org.inno.auto.steps.api;
 
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
