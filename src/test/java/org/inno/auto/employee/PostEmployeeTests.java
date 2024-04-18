@@ -15,7 +15,7 @@ import static org.inno.auto.steps.db.CompanyDbSteps.*;
 import static org.inno.auto.steps.db.CompanyDbSteps.createCompanyFromDB;
 import static org.inno.auto.steps.db.EmployeeDbSteps.deleteEmployeeFromDB;
 import static org.inno.auto.steps.db.EmployeeDbSteps.getEmployeeFromDB;
-import static org.inno.auto.steps.generate.RandomDataForApi.createRandomEmployee;
+import static org.inno.auto.steps.generate.RandomDataForApi.forCreateRandomEmployee;
 import static org.inno.auto.steps.generate.RandomDataForDB.createRandomCompany;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -30,7 +30,7 @@ public class PostEmployeeTests {
         company = createRandomCompany();
         createCompanyFromDB(company);
         //Создание сотрудника для запроса
-        employee = createRandomEmployee(company.getId());
+        employee = forCreateRandomEmployee(company.getId());
     }
 
     @AfterEach

@@ -61,14 +61,14 @@ public class EmployeeApiSteps {
         return response;
     }
 
-    public static Response patchEmployee(Employee employeeForPath, int employeeId, int expectedStatusCode) {
+    public static Response patchEmployee(Employee employeeForPatch, int employeeId, int expectedStatusCode) {
         Response response =
                 RestAssured.given()
                         .log().all()
                         .contentType(ContentType.JSON)
                         .header("x-client-token", getToken())
                         .pathParam("id", employeeId)
-                        .body(employeeForPath)
+                        .body(employeeForPatch)
                         .when()
                         .patch(getProp("BASE_URI") + "employee/{id}")
                         .then()
