@@ -29,7 +29,7 @@ public class RandomDataForDB {
         return company;
     }
 
-    public static EmployeeEntity createRandomEmployee(CompanyEntity company) {
+    public static EmployeeEntity createRandomEmployeeEntity(CompanyEntity company) {
         employee = new EmployeeEntity();
 
         employee.setIsActive(faker.bool().bool());

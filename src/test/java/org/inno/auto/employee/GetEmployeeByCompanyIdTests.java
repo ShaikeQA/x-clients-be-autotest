@@ -19,7 +19,7 @@ import static org.inno.auto.steps.db.EmployeeDbSteps.*;
 import static org.inno.auto.steps.generate.RandomDataForDB.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class GetEmployeeTests {
+public class GetEmployeeByCompanyIdTests {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
 
     static EmployeeEntity employee1;
@@ -37,12 +37,12 @@ public class GetEmployeeTests {
     public static void setUp() {
         //Создание компании с тремя сотрудниками
         company1 = createRandomCompany();
-        employee1 = createRandomEmployee(company1);
+        employee1 = createRandomEmployeeEntity(company1);
         employee2 = createRandomEmployeeOnlyWithRequiredAttributes(company1);
-        employee3 = createRandomEmployee(company1);
+        employee3 = createRandomEmployeeEntity(company1);
         //Создание компании с 1 сотрудником с полными данными
         company2 = createRandomCompany();
-        employee4 = createRandomEmployee(company2);
+        employee4 = createRandomEmployeeEntity(company2);
         //Создание компании с 1 сотрудником только с обязательными данными
         company3 = createRandomCompany();
         employee5 = createRandomEmployeeOnlyWithRequiredAttributes(company3);
